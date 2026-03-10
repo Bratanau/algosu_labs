@@ -1,4 +1,3 @@
-// gen.c – генерация бинарного файла с записями
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,13 +13,11 @@ void random_choice(char *dest, size_t size, const char *choices[], int count) {
 int main() {
     srand(time(NULL));
 
-    const char *surnames[] = {"Иванов", "Петров", "Сидоров", "Кузнецов", "Смирнов",
-                              "Васильев", "Попов", "Новиков", "Федоров", "Морозов"};
-    const char *cpu_types[] = {"Intel Core i3", "Intel Core i5", "Intel Core i7",
-                               "AMD Ryzen 3", "AMD Ryzen 5", "AMD Ryzen 7"};
+    const char *surnames[] = {"Иванов", "Петров", "Сидоров", "Кузнецов"};
+    const char *cpu_types[] = {"Intel Core i3", "Intel Core i5", "Intel Core i7"};
     const char *video_types[] = {"встроенный", "внешний", "видео-шина"};
     const char *hd_types[] = {"SAS", "SATA"};
-    const char *os_list[] = {"Windows 10", "Windows 11", "Linux Ubuntu", "macOS", "FreeBSD"};
+    const char *os_list[] = {"Windows 10", "Windows 11", "Ubuntu"};
 
     FILE *f = fopen("computers.bin", "wb");
     if (!f) {
@@ -32,33 +29,21 @@ int main() {
     struct computer comp;
 
     for (int i = 0; i < n; ++i) {
-        // Фамилия
-        random_choice(comp.surname, NAME_LEN, surnames, sizeof(surnames)/sizeof(surnames[0]));
-        // Число процессоров (1 или 2)
+        random_choice(comp.surname, STR_LEN, surnames, sizeof(surnames)/sizeof(surnames[0]));
         comp.cpu_count = (rand() % 2) + 1;
-        // Тип процессора
-        random_choice(comp.cpu_type, PROC_TYPE_LEN, cpu_types, sizeof(cpu_types)/sizeof(cpu_types[0]));
-        // ОЗУ (4, 8, 16, 32 ГБ)
+        random_choice(comp.cpu_type, STR_LEN, cpu_types, sizeof(cpu_types)/sizeof(cpu_types[0]));
         int ram_choices[] = {4, 8, 16, 32};
         comp.ram_size = ram_choices[rand() % 4];
-        // Видеоконтроллер
-        random_choice(comp.video_controller, VIDEO_TYPE_LEN, video_types, sizeof(video_types)/sizeof(video_types[0]));
-        // Видеопамять (0, 1, 2, 4, 8 ГБ)
+        random_choice(comp.video_controller, STR_LEN, video_types, sizeof(video_types)/sizeof(video_types[0]));
         int vram_choices[] = {0, 1, 2, 4, 8};
         comp.video_memory = vram_choices[rand() % 5];
-        // Тип винчестера
-        random_choice(comp.hd_type, HD_TYPE_LEN, hd_types, sizeof(hd_types)/sizeof(hd_types[0]));
-        // Количество винчестеров (1-3)
+        random_choice(comp.hd_type, STR_LEN, hd_types, sizeof(hd_types)/sizeof(hd_types[0]));
         comp.hd_count = rand() % 3 + 1;
-        // Суммарная ёмкость (ГБ)
         int cap_choices[] = {256, 512, 1024, 2048};
         comp.hd_capacity = cap_choices[rand() % 4] * comp.hd_count;
-        // Интегрированные контроллеры
         comp.integrated_controllers = rand() % 5;
-        // Внешние устройства (0-9)
         comp.external_devices = rand() % 10;
-        // ОС
-        random_choice(comp.os, OS_LEN, os_list, sizeof(os_list)/sizeof(os_list[0]));
+        random_choice(comp.os, STR_LEN, os_list, sizeof(os_list)/sizeof(os_list[0]));
 
         fwrite(&comp, sizeof(comp), 1, f);
     }
@@ -66,7 +51,6 @@ int main() {
     fclose(f);
     printf("Сгенерировано %d записей в файл computers.bin\n", n);
 
-    // Вывод содержимого в виде таблицы
     printf("\nСодержимое файла computers.bin:\n");
     f = fopen("computers.bin", "rb");
     if (!f) {

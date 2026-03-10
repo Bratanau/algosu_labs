@@ -4,12 +4,12 @@
 typedef enum {
     NODE_CONST, // константа
     NODE_VAR,   // переменная
-    NODE_OP     // операция
+    NODE_OP,     // операция
 } NodeType;
 
 typedef enum {
     OP_ADD,
-    OP_MUL
+    OP_MUL,
 } Operation;
 
 struct Node {
@@ -57,8 +57,7 @@ void deleteTree(struct Node* root) {
     free(root);
 }
 
-// предполагаем выражение n * a,
-struct Node* expandMulToSum(struct Node* root) {
+struct Node* expandMulToSum(struct Node* root) { // предполагаем выражение n * a
     if (!root || root->type != NODE_OP || root->data.binop.op != OP_MUL)
         return root;
 
@@ -106,8 +105,7 @@ void printExpr(struct Node* root) {
     }
 }
 
-// исходное выражение: 3 * a
-struct Node* buildExample(void) {
+struct Node* buildExample(void) {// исходное выражение: 3 * a
     struct Node* three = createConst(3);
     struct Node* a = createVar('a');
     return createOp(OP_MUL, three, a);
@@ -119,11 +117,11 @@ int main(void) {
     printExpr(expr);
     printf("\n");
 
-    struct Node* reduced = expandMulToSum(expr);
-    printf("После редукции: ");
-    printExpr(reduced);
+    struct Node* reducted = expandMulToSum(expr);
+    printf("После редaкции: ");
+    printExpr(reducted);
     printf("\n");
 
-    deleteTree(reduced);
+    deleteTree(reducted);
     return 0;
 }

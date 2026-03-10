@@ -1,4 +1,3 @@
-// query.c – обработка запросов
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

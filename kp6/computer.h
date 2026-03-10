@@ -2,25 +2,21 @@
 #ifndef COMPUTER_H
 #define COMPUTER_H
 
-#define NAME_LEN 30
-#define PROC_TYPE_LEN 20
-#define VIDEO_TYPE_LEN 20
-#define HD_TYPE_LEN 10
-#define OS_LEN 20
+#define STR_LEN 30
 
 struct computer {
-    char surname[NAME_LEN];
+    char surname[STR_LEN];
     int cpu_count;
-    char cpu_type[PROC_TYPE_LEN];
-    int ram_size;               // в ГБ
-    char video_controller[VIDEO_TYPE_LEN];
-    int video_memory;            // в ГБ
-    char hd_type[HD_TYPE_LEN];
+    char cpu_type[STR_LEN];
+    int ram_size;       
+    char video_controller[STR_LEN];
+    int video_memory;   
+    char hd_type[STR_LEN];
     int hd_count;
-    int hd_capacity;             // суммарная ёмкость в ГБ
+    int hd_capacity;   
     int integrated_controllers;
-    int external_devices;        // ключевое поле для условия
-    char os[OS_LEN];
+    int external_devices;
+    char os[STR_LEN];
 };
 
 #endif

@@ -55,24 +55,3 @@ size_t udt_size(const udt *d) {
 void udt_insert(udt *d, data_type val) {
     udt_push_back(d, val);
 }
-
-void udt_erase(udt *d, int key) {
-    if (udt_is_empty(d)) return;
-    udt tmp;
-    udt_create(&tmp);
-    int found = 0;
-    while (!udt_is_empty(d)) {
-        data_type cur = d->data[d->head];
-        udt_pop_front(d);
-        if (!found && cur.key == key) {
-            found = 1;
-        } else {
-            udt_push_back(&tmp, cur);
-        }
-    }
-    while (!udt_is_empty(&tmp)) {
-        data_type cur = tmp.data[tmp.head];
-        udt_pop_front(&tmp);
-        udt_push_back(d, cur);
-    }
-}

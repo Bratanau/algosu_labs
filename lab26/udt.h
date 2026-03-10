@@ -2,9 +2,13 @@
 #define UDT_H
 
 #include <stdbool.h>
+#include <stddef.h>
 
 #define MAX_SIZE 100
 #define STR_LEN 256
+
+typedef int key_type;
+typedef char value_type[STR_LEN];
 
 typedef struct {
     key_type key;
@@ -26,7 +30,6 @@ void udt_pop_front(udt *);
 void udt_pop_back(udt *);
 void udt_print(const udt *);
 size_t udt_size(const udt *);
-void udt_insert(udt *, const data_type); 
-void udt_erase(udt *, const key_type); 
+void udt_insert(udt *, data_type);
 
 #endif
