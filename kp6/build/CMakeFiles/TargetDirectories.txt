@@ -1,0 +1,4 @@
+/home/lya/FI/kp6/build/CMakeFiles/gen.dir
+/home/lya/FI/kp6/build/CMakeFiles/query.dir
+/home/lya/FI/kp6/build/CMakeFiles/edit_cache.dir
+/home/lya/FI/kp6/build/CMakeFiles/rebuild_cache.dir
