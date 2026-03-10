@@ -43,9 +43,7 @@ struct TreeNode* insert(struct TreeNode* node, int value) {
 }
 
 void deleteTree(struct TreeNode* node) {
-    if (node == NULL) {
-        return;
-    }
+    if (!node) return;
 
     deleteTree(node->left);
     deleteTree(node->right);
