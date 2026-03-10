@@ -9,7 +9,7 @@ struct TreeNode {
 };
 
 struct TreeNode* createNode(int value) {
-    struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    struct TreeNode* node = malloc(sizeof(struct TreeNode));
     node->val = value;
     node->left = NULL;
     node->right = NULL;

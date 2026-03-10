@@ -8,8 +8,7 @@ void sort_udt(udt *d) {
     data_type a[MAX_SIZE];
 
     for (int i = 0; i < n; i++) {
-        int idx = (d->head + i) % MAX_SIZE;
-        a[i] = d->data[idx];
+        a[i] = d->data[i];
     }
 
     for (int i = 1; i < n; i++) {

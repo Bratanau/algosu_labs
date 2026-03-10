@@ -3,8 +3,6 @@
 #include <string.h>
 
 void udt_create(udt *d) {
-    d->head = 0;
-    d->tail = 0;
     d->count = 0;
 }
 
@@ -12,37 +10,36 @@ bool udt_is_empty(const udt *d) {
     return d->count == 0;
 }
 
-void udt_push_front(udt *d, data_type val) {
+void udt_push_front(udt *d, data_type val) { //добавить в начало
     if (d->count == MAX_SIZE) return;
-    d->head = (d->head - 1 + MAX_SIZE) % MAX_SIZE;
-    d->data[d->head] = val;
+    for (int i = d->count; i > 0; i--)
+        d->data[i] = d->data[i - 1];
+    d->data[0] = val;
     d->count++;
 }
 
-void udt_push_back(udt *d, data_type val) {
+void udt_push_back(udt *d, data_type val) { //добавить в конец
     if (d->count == MAX_SIZE) return;
-    d->data[d->tail] = val;
-    d->tail = (d->tail + 1) % MAX_SIZE;
+    d->data[d->count] = val;
     d->count++;
 }
 
-void udt_pop_front(udt *d) {
+void udt_pop_front(udt *d) { //удалить из начала
     if (d->count == 0) return;
-    d->head = (d->head + 1) % MAX_SIZE;
+    for (int i = 0; i < d->count - 1; i++)
+        d->data[i] = d->data[i + 1];
     d->count--;
 }
 
-void udt_pop_back(udt *d) {
+void udt_pop_back(udt *d) { //удалить из конца
     if (d->count == 0) return;
-    d->tail = (d->tail - 1 + MAX_SIZE) % MAX_SIZE;
     d->count--;
 }
 
-void udt_print(const udt *d) {
+void udt_print(const udt *d) { //печать дека
     printf("[");
     for (int i = 0; i < d->count; i++) {
-        int idx = (d->head + i) % MAX_SIZE;
-        printf("(%d,%s)", d->data[idx].key, d->data[idx].value);
+        printf("(%d,%s)", d->data[i].key, d->data[i].value);
         if (i < d->count - 1) printf(", ");
     }
     printf("]\n");

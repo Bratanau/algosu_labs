@@ -49,7 +49,7 @@ int main() {
     }
 
     fclose(f);
-    printf("Сгенерировано %d записей в файл computers.bin\n", n);
+    printf("Сгенерировы записи в файл\n");
 
     printf("\nСодержимое файла computers.bin:\n");
     f = fopen("computers.bin", "rb");

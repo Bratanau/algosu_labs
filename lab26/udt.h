@@ -17,8 +17,6 @@ typedef struct {
 
 typedef struct {
     data_type data[MAX_SIZE];
-    int head;
-    int tail;
     int count;
 } udt;
 
