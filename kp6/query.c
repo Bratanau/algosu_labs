@@ -51,8 +51,8 @@ void print_incomplete(const char *filename, int p) {
 
 void usage(const char *progname) {
     fprintf(stderr, "Использование:\n");
-    fprintf(stderr, "  %s -f <файл>            - распечатать содержимое файла\n", progname);
-    fprintf(stderr, "  %s -p <число> <файл>    - вывести список неукомплектованных компьютеров (внешних устройств < число)\n", progname);
+    fprintf(stderr, "  %s -f <файл> \n", progname);
+    fprintf(stderr, "  %s -p <число> <файл>\n", progname);
 }
 
 int main(int argc, char *argv[]) {
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
         }
         int p = atoi(argv[2]);
         if (p < 0) {
-            fprintf(stderr, "Параметр p должен быть неотрицательным.\n");
+            fprintf(stderr, "p должен быть >=0\n");
             return 1;
         }
         print_incomplete(argv[3], p);
