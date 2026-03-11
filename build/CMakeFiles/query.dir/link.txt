@@ -1,1 +1,0 @@
-/usr/bin/cc -rdynamic CMakeFiles/query.dir/query.c.o -o query  -lm 

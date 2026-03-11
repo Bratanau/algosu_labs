@@ -1,3 +1,0 @@
-/home/lya/FI/lab26/build/CMakeFiles/lab26.dir
-/home/lya/FI/lab26/build/CMakeFiles/edit_cache.dir
-/home/lya/FI/lab26/build/CMakeFiles/rebuild_cache.dir

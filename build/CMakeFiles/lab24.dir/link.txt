@@ -1,1 +1,0 @@
-/usr/bin/cc -rdynamic CMakeFiles/lab24.dir/lab24.c.o -o lab24  -lm 
