@@ -1,0 +1,8 @@
+/home/lya/FI/build/CMakeFiles/lab23.dir
+/home/lya/FI/build/CMakeFiles/lab24.dir
+/home/lya/FI/build/CMakeFiles/lab26.dir
+/home/lya/FI/build/CMakeFiles/gen.dir
+/home/lya/FI/build/CMakeFiles/query.dir
+/home/lya/FI/build/CMakeFiles/kp9.dir
+/home/lya/FI/build/CMakeFiles/edit_cache.dir
+/home/lya/FI/build/CMakeFiles/rebuild_cache.dir
